@@ -19,7 +19,6 @@ class Grammatic(BaseModel):
 @app.route("/l_system/<grammatic>")
 def hello_world(grammatic: str):
     try:
-        grammatic_dict = dict(el.split("=") for el in grammatic.split(","))
         grammatic_ = Grammatic.parse_obj(dict(el.split("=") for el in grammatic.split(",")))
         return f"<p>{grammatic_}</p>"
     except ValidationError as e:
